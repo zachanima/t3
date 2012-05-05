@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
   attr_accessible :buy, :name, :sell, :type_id
 
   has_one :relic
-  has_many :materials
+  has_many :materials, dependent: :destroy
   has_many :relics, through: :materials
 
   validates :name, presence: true, uniqueness: true

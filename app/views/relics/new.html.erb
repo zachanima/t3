@@ -14,6 +14,13 @@
       <%= f.label :wrecked_id %>
       <%= f.collection_select :wrecked_id, Item.all, :id, :name %>
     </li>
+    <%= f.fields_for :materials do |m| %>
+      <li>
+        <%= m.label :quantity, m.object.item.name %>
+        <%= m.number_field :quantity %>
+        <%= m.hidden_field :item_id %>
+      </li>
+    <% end %>
   </ol>
   <%= f.submit %>
 <% end %>

@@ -5,10 +5,16 @@ class RelicsController < ApplicationController
 
   def new
     @relic = Relic.new
+    Item.all.each do |item|
+      @relic.materials.new item_id: item.id
+    end
   end
 
   def create
     @relic = Relic.new(params[:relic])
+    @relic.materials.reject! do |material|
+      material.quantity.nil?
+    end
     if @relic.save
       redirect_to relics_path
     else

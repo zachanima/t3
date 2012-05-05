@@ -4,5 +4,5 @@ class Material < ActiveRecord::Base
   belongs_to :item
   belongs_to :relic
 
-  validates_numericality_of :item_id, :relic_id, :quantity
+  validates_numericality_of :item_id, :quantity
 end
