@@ -5,4 +5,8 @@ class Material < ActiveRecord::Base
   belongs_to :relic
 
   validates_numericality_of :item_id, :quantity
+
+  def buy
+    self.item.buy * self.quantity
+  end
 end

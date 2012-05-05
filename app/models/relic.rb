@@ -14,4 +14,8 @@ class Relic < ActiveRecord::Base
   accepts_nested_attributes_for :materials, :tools
 
   validates_numericality_of :intact_id, :malfunctioning_id, :wrecked_id
+
+  def name
+    self.intact.name.split[1]
+  end
 end

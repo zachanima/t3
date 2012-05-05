@@ -1,0 +1,16 @@
+<h1>Blueprints#new</h1>
+
+<%= form_for @blueprint do |f| %>
+  <ol>
+    <li>
+      <%= f.label :item_id %>
+      <%= f.collection_select :item_id, Item.subsystems, :id, :name %>
+    </li>
+    <li>
+      <%= f.label :relic_id %>
+      <%= f.collection_select :relic_id, Relic.all, :id, :name %>
+    </li>
+  </ol>
+  <%= f.submit %>
+<% end %>
+

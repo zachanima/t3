@@ -19,6 +19,7 @@ class Item < ActiveRecord::Base
   scope :tools, joins(:group).where('groups.name = ?', 'tool')
   scope :salvages, joins(:group).where('groups.name = ?', 'salvage')
   scope :polymers, joins(:group).where('groups.name = ?', 'polymer')
+  scope :subsystems, joins(:group).where('groups.name = ?', 'subsystem')
   scope :outdated, where('updated_at < ? or buy is null or sell is null',
                          Time.now - 6.hours).limit(100)
 end

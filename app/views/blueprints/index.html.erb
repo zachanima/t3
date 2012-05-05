@@ -1,0 +1,26 @@
+<h1>Blueprints#index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Materials @ buy</th>
+      <th>Subsystem @ sell</th>
+      <th>Profit</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blueprints.each do |blueprint| %>
+      <tr>
+        <td><%= blueprint.name %></td>
+        <td><%= blueprint.buy.isk %></td>
+        <td class="value"><%= blueprint.item.sell.isk %></td>
+        <td class="value"><%= blueprint.profit.isk %></td>
+        <td class="value"><%= blueprint.profit_in_percent %>%</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New blueprint', new_blueprint_path %>
