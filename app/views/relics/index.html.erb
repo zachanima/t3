@@ -1,0 +1,22 @@
+<h1>Relics#index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Intact</th>
+      <th>Malfunctioning</th>
+      <th>Wrecked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @relics.each do |relic| %>
+      <tr>
+        <td><%= relic.intact.name %></td>
+        <td><%= relic.malfunctioning.name %></td>
+        <td><%= relic.wrecked.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New relic', new_relic_path %>
