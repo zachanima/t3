@@ -14,11 +14,12 @@ class Item < ActiveRecord::Base
   validates_presence_of :group_id
 
   default_scope order(:group_id)
-  scope :relics, joins(:group).where('groups.name = ?', 'relic')
-  scope :datacores, joins(:group).where('groups.name = ?', 'datacore')
-  scope :tools, joins(:group).where('groups.name = ?', 'tool')
   scope :salvages, joins(:group).where('groups.name = ?', 'salvage')
   scope :polymers, joins(:group).where('groups.name = ?', 'polymer')
+  scope :datacores, joins(:group).where('groups.name = ?', 'datacore')
+  scope :tools, joins(:group).where('groups.name = ?', 'tool')
+  scope :decryptors, joins(:group).where('groups.name = ?', 'decryptor')
+  scope :relics, joins(:group).where('groups.name = ?', 'relic')
   scope :subsystems, joins(:group).where('groups.name = ?', 'subsystem')
   scope :outdated, where('updated_at < ? or buy is null or sell is null',
                          Time.now - 6.hours).limit(100)

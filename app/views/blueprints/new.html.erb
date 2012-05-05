@@ -10,6 +10,10 @@
       <%= f.label :relic_id %>
       <%= f.collection_select :relic_id, Relic.all, :id, :name %>
     </li>
+    <li>
+      <%= f.label :decryptor_id %>
+      <%= f.collection_select :decryptor_id, Item.decryptors, :id, :name %>
+    </li>
   </ol>
   <%= f.submit %>
 <% end %>

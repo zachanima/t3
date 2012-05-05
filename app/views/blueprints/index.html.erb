@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Decryptor</th>
       <th>Materials @ buy</th>
       <th>Subsystem @ sell</th>
       <th>Profit</th>
@@ -14,10 +15,18 @@
     <% @blueprints.each do |blueprint| %>
       <tr>
         <td><%= blueprint.name %></td>
+        <td><%= blueprint.decryptor.name %></td>
         <td><%= blueprint.buy.isk %></td>
         <td class="value"><%= blueprint.item.sell.isk %></td>
         <td class="value"><%= blueprint.profit.isk %></td>
         <td class="value"><%= blueprint.profit_in_percent %>%</td>
+        <td>
+          <%= blueprint.intact_per_run.isk %><br>
+          <%= blueprint.malfunctioning_per_run.isk %><br>
+          <%= blueprint.wrecked_per_run.isk %><br>
+        </td>
+        <td><%= blueprint.per_run.isk %></td>
+        <td><%= blueprint.cheapest_relic %></td>
       </tr>
     <% end %>
   </tbody>

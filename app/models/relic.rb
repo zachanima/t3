@@ -18,4 +18,9 @@ class Relic < ActiveRecord::Base
   def name
     self.intact.name.split[1]
   end
+
+
+  def tools_buy
+    self.tools.collect(&:buy).inject(:+)
+  end
 end
