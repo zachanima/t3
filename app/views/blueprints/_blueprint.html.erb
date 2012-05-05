@@ -14,7 +14,7 @@
 
     <% if blueprint.profit >= 0 %>
       <div class="profit">
-        Profit (<%= blueprint.profit_in_percent %>%)
+        Profit (<span><%= blueprint.profit_in_percent %>%</span>)
         <span class="value"><%= blueprint.profit.isk %></span>
       </div>
     <% else %>
@@ -22,6 +22,7 @@
         Loss (<span><%= blueprint.profit_in_percent %>%</span>)
         <span class="value"><%= blueprint.profit.isk %></span>
       </div>
+    <% end %>
   </div>
 
 
