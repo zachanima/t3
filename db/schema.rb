@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505052143) do
+ActiveRecord::Schema.define(:version => 20120505060258) do
 
   create_table "items", :force => true do |t|
     t.integer  "type_id"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20120505052143) do
     t.float    "sell"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "relics", :force => true do |t|
+    t.string   "name"
+    t.integer  "intact_id"
+    t.integer  "malfunctioning_id"
+    t.integer  "wrecked_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end
