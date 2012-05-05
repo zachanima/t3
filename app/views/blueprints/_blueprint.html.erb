@@ -12,10 +12,16 @@
       <span class="value"><%= blueprint.buy.isk %></span>
     </div>
 
-    <div class="profit">
-      Profit (<%= blueprint.profit_in_percent %>%)
-      <span class="value"><%= blueprint.profit.isk %></span>
-    </div>
+    <% if blueprint.profit >= 0 %>
+      <div class="profit">
+        Profit (<%= blueprint.profit_in_percent %>%)
+        <span class="value"><%= blueprint.profit.isk %></span>
+      </div>
+    <% else %>
+      <div class="loss">
+        Loss (<span><%= blueprint.profit_in_percent %>%</span>)
+        <span class="value"><%= blueprint.profit.isk %></span>
+      </div>
   </div>
 
 
