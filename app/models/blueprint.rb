@@ -43,8 +43,12 @@ class Blueprint < ActiveRecord::Base
     end
   end
 
+  def material_buy
+    self.relic.materials.collect(&:buy).inject(:+)
+  end
+
   def buy
-    self.relic.materials.collect(&:buy).inject(:+) + per_run
+    self.material_buy + self.per_run
   end
 
   def profit
