@@ -3,8 +3,8 @@
   <ul>
     <% @blueprints.each do |blueprint| %>
       <li>
-        <%= link_to "##{blueprint.id}" do %>
-          <%= blueprint.item.name %> (<%= blueprint.profit_in_percent %>%)
+        <%= link_to "##{blueprint.id}", class: blueprint.profit >= 0 ? 'profit' : 'loss' do %>
+          <%= blueprint.item.name %> (<span><%= blueprint.profit_in_percent %>%</span>)
           <span class="value"><%= blueprint.profit.isk %></span>
         <% end %>
       </li>
