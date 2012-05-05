@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505060258) do
+ActiveRecord::Schema.define(:version => 20120505062226) do
 
   create_table "items", :force => true do |t|
     t.integer  "type_id"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20120505060258) do
   end
 
   create_table "relics", :force => true do |t|
-    t.string   "name"
     t.integer  "intact_id"
     t.integer  "malfunctioning_id"
     t.integer  "wrecked_id"
