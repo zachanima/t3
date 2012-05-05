@@ -11,11 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505091719) do
+ActiveRecord::Schema.define(:version => 20120505102239) do
 
   create_table "blueprints", :force => true do |t|
     t.integer "item_id"
     t.integer "relic_id"
+    t.integer "decryptor_id"
   end
 
   create_table "groups", :force => true do |t|
