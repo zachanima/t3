@@ -1,0 +1,24 @@
+<h1>Items#index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type ID</th>
+      <th>Name</th>
+      <th>Buy</th>
+      <th>Sell</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.type_id %></td>
+        <td><%= item.name %></td>
+        <td><%= item.buy %></td>
+        <td><%= item.sell %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New item', new_item_path %>

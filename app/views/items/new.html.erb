@@ -1,0 +1,16 @@
+<h1>Items#new</h1>
+
+<%= form_for @item do |f| %>
+  <ol>
+    <li>
+      <%= f.label :type_id %>
+      <%= f.number_field :type_id %>
+    </li>
+    <li>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </li>
+  </ol>
+  <%= f.submit %>
+<% end %>
+
