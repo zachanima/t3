@@ -14,6 +14,7 @@ class Item < ActiveRecord::Base
 
   default_scope order(:name)
   scope :relics, joins(:group).where('groups.name = ?', 'relic')
+  scope :datacores, joins(:group).where('groups.name = ?', 'datacore')
   scope :tools, joins(:group).where('groups.name = ?', 'tool')
   scope :salvages, joins(:group).where('groups.name = ?', 'salvage')
   scope :polymers, joins(:group).where('groups.name = ?', 'polymer')

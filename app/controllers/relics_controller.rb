@@ -11,6 +11,9 @@ class RelicsController < ApplicationController
     Item.polymers.each do |item|
       @relic.materials.new item_id: item.id
     end
+    Item.datacores.each do |item|
+      @relic.tools.new item_id: item.id
+    end
     Item.tools.each do |item|
       @relic.tools.new item_id: item.id
     end
