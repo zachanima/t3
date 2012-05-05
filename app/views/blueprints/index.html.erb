@@ -1,35 +1,15 @@
-<h1>Blueprints#index</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Decryptor</th>
-      <th>Materials @ buy</th>
-      <th>Subsystem @ sell</th>
-      <th>Profit</th>
-      <th>%</th>
-    </tr>
-  </thead>
-  <tbody>
+<div id="blueprints">
+  <h2>Subsystems</h2>
+  <ul>
     <% @blueprints.each do |blueprint| %>
-      <tr>
-        <td><%= blueprint.name %></td>
-        <td><%= blueprint.decryptor.name %></td>
-        <td><%= blueprint.buy.isk %></td>
-        <td class="value"><%= blueprint.item.sell.isk %></td>
-        <td class="value"><%= blueprint.profit.isk %></td>
-        <td class="value"><%= blueprint.profit_in_percent %>%</td>
-        <td>
-          <%= blueprint.intact_per_run.isk %><br>
-          <%= blueprint.malfunctioning_per_run.isk %><br>
-          <%= blueprint.wrecked_per_run.isk %><br>
-        </td>
-        <td><%= blueprint.per_run.isk %></td>
-        <td><%= blueprint.cheapest_relic %></td>
-      </tr>
+      <li>
+        <%= link_to "##{blueprint.id}" do %>
+          <%= blueprint.item.name %> (<%= blueprint.profit_in_percent %>%)
+          <span class="value"><%= blueprint.profit.isk %></span>
+        <% end %>
+      </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</div>
 
-<%= link_to 'New blueprint', new_blueprint_path %>
+<%= render @blueprints %>

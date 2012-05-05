@@ -1,0 +1,63 @@
+<div class="blueprint" id="<%= dom_id blueprint %>">
+  <div class="header">
+    <h1><%= blueprint.item.name %> Blueprint</h1>
+
+    <div class="faded">
+      Subsystem @ sell
+      <span class="value"><%= blueprint.item.sell.isk %></span>
+    </div>
+
+    <div class="faded">
+      Materials @ buy
+      <span class="value"><%= blueprint.buy.isk %></span>
+    </div>
+
+    <div class="profit">
+      Profit (<%= blueprint.profit_in_percent %>%)
+      <span class="value"><%= blueprint.profit.isk %></span>
+    </div>
+  </div>
+
+
+
+  <div class="reverse-engineering">
+    <h2>Reverse Engineering<span>(4 &times; cost/run)</span></h2>
+    <div<%== ' class="faded"' if blueprint.cheapest_relic != 'intact' %>>
+      Intact Weapon Subroutines
+      <span class="value"><%= blueprint.intact_per_run.isk %></span>
+    </div>
+    <div<%== ' class="faded"' if blueprint.cheapest_relic != 'malfunctioning' %>>
+      Malfunctioning Weapon Subroutines
+      <span class="value"><%= blueprint.malfunctioning_per_run.isk %></span>
+    </div>
+    <div<%== ' class="faded"' if blueprint.cheapest_relic != 'wrecked' %>>
+      Wrecked Weapon Subroutines
+      <span class="value"><%= blueprint.wrecked_per_run.isk %></span>
+    </div>
+  </div>
+
+
+
+  <div class="materials">
+    <h2>Materials</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="value">#</th>
+          <th>Salvage</th>
+          <th class="value">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% blueprint.relic.materials.each do |material| %>
+          <tr>
+            <td class="value"><%= material.quantity %></td>
+            <td><%= material.item.name %></td>
+            <td class="value"><%= material.buy.isk %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

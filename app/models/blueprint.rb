@@ -9,13 +9,6 @@ class Blueprint < ActiveRecord::Base
     [self.item.name, 'Blueprint'] * ' '
   end
 
-  def buy
-    self.relic.materials.collect(&:buy).inject(:+)
-  end
-
-  def profit
-    self.item.sell - self.buy
-  end
 
   def profit_in_percent
     (self.profit * 100 / self.buy).round
@@ -23,17 +16,17 @@ class Blueprint < ActiveRecord::Base
 
   def intact_per_run
       (self.relic.intact.buy + self.relic.tools_buy + self.decryptor.buy) /
-      (20 * 0.84)
+      (20 * 0.84 * 0.25)
   end
 
   def malfunctioning_per_run
       (self.relic.malfunctioning.buy + self.relic.tools_buy + self.decryptor.buy) /
-      (10 * 0.63)
+      (10 * 0.63 * 0.25)
   end
 
   def wrecked_per_run
       (self.relic.wrecked.buy + self.relic.tools_buy + self.decryptor.buy) /
-      (3 * 0.42)
+      (3 * 0.42 * 0.25)
   end
 
   def per_run
@@ -48,5 +41,13 @@ class Blueprint < ActiveRecord::Base
     else
       'wrecked'
     end
+  end
+
+  def buy
+    self.relic.materials.collect(&:buy).inject(:+) + per_run
+  end
+
+  def profit
+    self.item.sell - self.buy
   end
 end
