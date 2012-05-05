@@ -5,8 +5,13 @@ class RelicsController < ApplicationController
 
   def new
     @relic = Relic.new
-    Item.all.each do |item|
+    Item.salvages.each do |item|
       @relic.materials.new item_id: item.id
+    end
+    Item.polymers.each do |item|
+      @relic.materials.new item_id: item.id
+    end
+    Item.tools.each do |item|
       @relic.tools.new item_id: item.id
     end
   end

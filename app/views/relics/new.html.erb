@@ -5,15 +5,15 @@
   <ol>
     <li>
       <%= f.label :intact_id %>
-      <%= f.collection_select :intact_id, Item.all, :id, :name %>
+      <%= f.collection_select :intact_id, Item.relics, :id, :name %>
     </li>
     <li>
       <%= f.label :malfunctioning_id %>
-      <%= f.collection_select :malfunctioning_id, Item.all, :id, :name %>
+      <%= f.collection_select :malfunctioning_id, Item.relics, :id, :name %>
     </li>
     <li>
       <%= f.label :wrecked_id %>
-      <%= f.collection_select :wrecked_id, Item.all, :id, :name %>
+      <%= f.collection_select :wrecked_id, Item.relics, :id, :name %>
     </li>
   </ol>
   <h2>Tools</h2>

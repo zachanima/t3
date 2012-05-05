@@ -6,6 +6,7 @@
       <th>Intact</th>
       <th>Malfunctioning</th>
       <th>Wrecked</th>
+      <th>Tools</th>
       <th>Materials</th>
     </tr>
   </thead>
@@ -15,6 +16,11 @@
         <td><%= relic.intact.name %></td>
         <td><%= relic.malfunctioning.name %></td>
         <td><%= relic.wrecked.name %></td>
+        <td>
+          <% relic.tools.each do |tool| %>
+            <%= tool.quantity %> of <%= tool.item.name %><br>
+          <% end %>
+        </td>
         <td>
           <% relic.materials.each do |material| %>
             <%= material.quantity %> of <%= material.item.name %><br>

@@ -13,6 +13,10 @@ class Item < ActiveRecord::Base
   validates_numericality_of :type_id
 
   default_scope order(:name)
+  scope :relics, joins(:group).where('groups.name = ?', 'relic')
+  scope :tools, joins(:group).where('groups.name = ?', 'tool')
+  scope :salvages, joins(:group).where('groups.name = ?', 'salvage')
+  scope :polymers, joins(:group).where('groups.name = ?', 'polymer')
   scope :outdated, where('updated_at < ? or buy is null or sell is null',
                          Time.now - 6.hours).limit(100)
 end
