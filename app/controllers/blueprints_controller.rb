@@ -47,6 +47,7 @@ private
       item.sell = sell[i]
       item.buy = buy[i]
       item.save
+      item.touch
     end
   end
 end
