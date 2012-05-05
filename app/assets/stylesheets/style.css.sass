@@ -48,7 +48,6 @@ div#blueprints
 
 
   ul
-    border: 1px solid $dark
     list-style: none
     margin: 0
     padding: 0
@@ -57,9 +56,13 @@ div#blueprints
       color: $color
       text-decoration: none
       display: block
-      padding: 0 2px
+      padding: 2px 4px
       &:hover
-        background-color: $dark
+        background-color: $dark !important
+        color: #fff
+      &.active
+        background-color: $darker
+        color: #fff
 
 
 
