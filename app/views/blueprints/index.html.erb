@@ -2,7 +2,7 @@
   <h2>Subsystems</h2>
   <ul>
     <% @blueprints.each do |blueprint| %>
-      <li>
+      <li<%== ' class="best"' if blueprint.best? %>>
         <%= link_to "##{blueprint.id}",
           class: blueprint.profit >= 0 ? 'profit' : 'loss' do %>
           <%= blueprint.item.name %>

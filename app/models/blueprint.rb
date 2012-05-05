@@ -54,4 +54,16 @@ class Blueprint < ActiveRecord::Base
   def profit
     self.item.sell - self.buy
   end
+
+  def best?
+    blueprints = Blueprint.joins(:item).where('name like ? and name like ?',
+      "#{self.name.split[0]} %", "%#{self.name.split[1]}%")
+
+    blueprints.reject{ |b| b === self }.each do |blueprint|
+      if blueprint.profit_in_percent > self.profit_in_percent
+        return false
+      end
+    end
+    true
+  end
 end
