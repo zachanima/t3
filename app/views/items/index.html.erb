@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Group</th>
       <th>Type ID</th>
       <th>Name</th>
       <th>Buy</th>
@@ -12,6 +13,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= item.group.print_name %></td>
         <td><%= item.type_id %></td>
         <td><%= item.name %></td>
         <td><%= item.buy %></td>
