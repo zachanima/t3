@@ -4,6 +4,8 @@ class Item < ActiveRecord::Base
   has_one :relic
   has_many :materials, dependent: :destroy
   has_many :relics, through: :materials
+  has_many :tools, dependent: :destroy
+  has_many :relics, through: :tools
 
   validates :name, presence: true, uniqueness: true
   validates_numericality_of :type_id

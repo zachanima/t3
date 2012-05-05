@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505063313) do
+ActiveRecord::Schema.define(:version => 20120505072730) do
 
   create_table "items", :force => true do |t|
     t.integer  "type_id"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(:version => 20120505063313) do
     t.integer  "wrecked_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "tools", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "relic_id"
+    t.integer  "quantity"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

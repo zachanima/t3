@@ -1,6 +1,7 @@
 <h1>Relics#new</h1>
 
 <%= form_for @relic do |f| %>
+  <h2>Relics</h2>
   <ol>
     <li>
       <%= f.label :intact_id %>
@@ -14,6 +15,19 @@
       <%= f.label :wrecked_id %>
       <%= f.collection_select :wrecked_id, Item.all, :id, :name %>
     </li>
+  </ol>
+  <h2>Tools</h2>
+  <ol>
+    <%= f.fields_for :tools do |t| %>
+      <li>
+        <%= t.label :quantity, t.object.item.name %>
+        <%= t.number_field :quantity %>
+        <%= t.hidden_field :item_id %>
+      </li>
+    <% end %>
+  </ol>
+  <h2>Materials</h2>
+  <ol>
     <%= f.fields_for :materials do |m| %>
       <li>
         <%= m.label :quantity, m.object.item.name %>
