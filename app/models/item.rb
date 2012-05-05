@@ -9,8 +9,8 @@ class Item < ActiveRecord::Base
   has_many :relics, through: :tools
 
   validates :name, presence: true, uniqueness: true
+  validates :type_id, numericality: true, uniqueness: true
   validates_presence_of :group_id
-  validates_numericality_of :type_id
 
   default_scope order(:name)
   scope :relics, joins(:group).where('groups.name = ?', 'relic')
