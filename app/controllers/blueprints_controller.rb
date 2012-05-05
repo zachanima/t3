@@ -4,7 +4,7 @@ require 'rexml/document'
 class BlueprintsController < ApplicationController
   def index
     update_values
-    @blueprints = Blueprint.all
+    @blueprints = Blueprint.scoped
   end
 
   def new

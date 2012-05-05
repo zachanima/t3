@@ -5,6 +5,12 @@ class Blueprint < ActiveRecord::Base
   belongs_to :relic
   belongs_to :decryptor, class_name: 'Item', foreign_key: :decryptor_id
 
+  scope :defensive, joins(:item).where("name like '% Defensive %'")
+  scope :electronics, joins(:item).where("name like '% Electronics %'")
+  scope :engineering, joins(:item).where("name like '% Engineering %'")
+  scope :offensive, joins(:item).where("name like '% Offensive %'")
+  scope :propulsion, joins(:item).where("name like '% Propulsion %'")
+
   def name
     [self.item.name, 'Blueprint'] * ' '
   end
