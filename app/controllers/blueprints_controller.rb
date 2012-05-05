@@ -1,3 +1,6 @@
+require 'net/http'
+require 'rexml/document'
+
 class BlueprintsController < ApplicationController
   def index
     update_values

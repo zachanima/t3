@@ -1,6 +1,3 @@
-require 'net/http'
-require 'rexml/document'
-
 class ItemsController < ApplicationController
   def index
     @items = Item.all
