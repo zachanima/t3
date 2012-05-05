@@ -7,6 +7,7 @@ class Item < ActiveRecord::Base
   has_many :relics, through: :materials
   has_many :tools, dependent: :destroy
   has_many :relics, through: :tools
+  has_many :blueprints
 
   validates :name, presence: true, uniqueness: true
   validates :type_id, numericality: true, uniqueness: true

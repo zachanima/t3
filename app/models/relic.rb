@@ -9,6 +9,7 @@ class Relic < ActiveRecord::Base
   has_many :items, through: :materials
   has_many :tools, dependent: :destroy
   has_many :items, through: :tools
+  has_many :blueprints
 
   accepts_nested_attributes_for :materials, :tools
 
