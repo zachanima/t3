@@ -10,6 +10,10 @@ class Blueprint < ActiveRecord::Base
   scope :engineering, joins(:item).where("name like '% Engineering %'")
   scope :offensive, joins(:item).where("name like '% Offensive %'")
   scope :propulsion, joins(:item).where("name like '% Propulsion %'")
+  scope :legion, joins(:item).where("name like 'Legion %'")
+  scope :loki, joins(:item).where("name like 'Loki %'")
+  scope :proteus, joins(:item).where("name like 'Proteus %'")
+  scope :tengu, joins(:item).where("name like 'Tengu %'")
 
   def name
     [self.item.name, 'Blueprint'] * ' '
