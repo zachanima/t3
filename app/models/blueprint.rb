@@ -60,7 +60,7 @@ class Blueprint < ActiveRecord::Base
       "#{self.name.split[0]} %", "%#{self.name.split[1]}%")
 
     blueprints.reject{ |b| b === self }.each do |blueprint|
-      if blueprint.profit_in_percent > self.profit_in_percent
+      if blueprint.profit > self.profit
         return false
       end
     end
