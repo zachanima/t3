@@ -12,7 +12,7 @@ class Item < ActiveRecord::Base
   validates :type_id, numericality: true, uniqueness: true
   validates_presence_of :group_id
 
-  default_scope order(:name)
+  default_scope order(:group_id)
   scope :relics, joins(:group).where('groups.name = ?', 'relic')
   scope :datacores, joins(:group).where('groups.name = ?', 'datacore')
   scope :tools, joins(:group).where('groups.name = ?', 'tool')
