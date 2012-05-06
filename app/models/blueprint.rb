@@ -6,7 +6,7 @@ class Blueprint < ActiveRecord::Base
   belongs_to :decryptor, class_name: 'Item', foreign_key: :decryptor_id
 
   scope :grouped, lambda { |group|
-    includes(:item).where 'items.name like ?', "%#{group}%"
+    includes(:item).where 'items.name like ?', "#{group}%"
   }
 
   def name

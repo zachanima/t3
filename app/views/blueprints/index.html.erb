@@ -9,7 +9,7 @@
             <li class="closed">
               <a class="list profit" href="#">
                 <%= race.capitalize %>
-                <% @blueprints.grouped(group).grouped(race).each do |blueprint| %>
+                <% @blueprints.grouped("#{race} #{group}").each do |blueprint| %>
                   <% if blueprint.best? %>
                     <span class="top-value">
                     <%= blueprint.item.name.split[1..-1] * ' ' %>
@@ -20,7 +20,7 @@
                 <% end %>
               </a>
               <ul>
-                <% @blueprints.grouped(group).grouped(race).each do |blueprint| %>
+                <% @blueprints.grouped("#{race} #{group}").each do |blueprint| %>
                   <li<%== ' class="best"' if blueprint.best? %>>
                     <%= link_to "##{blueprint.id}",
                       class: blueprint.profit >= 0 ? 'profit' : 'loss' do %>
