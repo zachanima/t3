@@ -39,9 +39,9 @@ class Blueprint < ActiveRecord::Base
   end
 
   def cheapest_relic
-    if per_run == intact_per_run * (self.subsystem? ? 4 : 1)
+    if per_run == intact_per_run * (self.subsystem? ? 4.0 : 1.0)
       'intact'
-    elsif per_run == malfunctioning_per_run
+    elsif per_run == malfunctioning_per_run * (self.subsystem? ? 4.0 : 1.0)
       'malfunctioning'
     else
       'wrecked'
