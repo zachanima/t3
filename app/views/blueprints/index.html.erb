@@ -41,7 +41,7 @@
       <ul>
         <% %w[Legion Loki Proteus Tengu].each do |hull| %>
           <% @blueprints.includes(:item).where('items.name = ?', hull).each do |blueprint| %>
-            <li<%== ' class="best"' if blueprint.best? %>>
+            <li>
               <%= link_to "##{blueprint.id}",
                 class: blueprint.profit >= 0 ? 'profit' : 'loss' do %>
                 <%= blueprint.item.name %>
