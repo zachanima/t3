@@ -61,8 +61,7 @@ class Blueprint < ActiveRecord::Base
   end
 
   def best?
-    blueprints =
-      Blueprint.includes(:item).where('items.name like ? and items.name like ?',
+    blueprints = Blueprint.includes(:item).where('items.name like ?',
         "#{self.name.split[0]} #{self.name.split[1]}%")
 
     blueprints.reject{ |b| b === self }.each do |blueprint|
