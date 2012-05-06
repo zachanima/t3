@@ -36,6 +36,23 @@
         </ul>
       </li>
     <% end %>
+    <li class="closed">
+      <a class="list" href="#">Hull</a>
+      <ul>
+        <% %w[Legion Loki Proteus Tengu].each do |hull| %>
+          <% @blueprints.includes(:item).where('items.name = ?', hull).each do |blueprint| %>
+            <li<%== ' class="best"' if blueprint.best? %>>
+              <%= link_to "##{blueprint.id}",
+                class: blueprint.profit >= 0 ? 'profit' : 'loss' do %>
+                <%= blueprint.item.name %>
+                (<span><%= blueprint.profit_in_percent %>%</span>)
+                <span class="value"><%= blueprint.profit.isk %></span>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </li>
   </ul>
 </div>
 
