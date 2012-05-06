@@ -71,6 +71,10 @@ class Blueprint < ActiveRecord::Base
     self.buy - (self.best? ? 0.0 : self.per_run)
   end
 
+  def corp_cost_in_percent
+    ((self.corp_cost * 100) / self.item.buy).round
+  end
+
   def best?
     if not self.subsystem?
       return false

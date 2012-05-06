@@ -20,6 +20,10 @@ class BlueprintsController < ApplicationController
     end
   end
 
+  def corp_index
+    index
+  end
+
 private
   def update_values
     if (items = Item.outdated.collect(&:type_id)).empty?

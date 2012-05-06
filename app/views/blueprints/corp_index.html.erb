@@ -1,0 +1,37 @@
+<div id="blueprints">
+  <h2>Subsystems &amp; Hulls</h2>
+  <ul>
+    <% %w[legion loki proteus tengu].each do |race| %>
+      <li class="closed">
+        <a class="list" href="#"><%= race.capitalize %></a>
+        <ul>
+          <% @blueprints.grouped(race).each do |blueprint| %>
+            <li>
+              <%= link_to '#', class: 'profit' do %>
+                <%= blueprint.item.name %>
+                (<span><%= blueprint.corp_cost_in_percent %>%</span>)
+                <span class="value"><%= blueprint.corp_cost.isk %></span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+    <li class="closed">
+      <a class="list" href="#">Hull</a>
+      <ul>
+        <% %w[Legion Loki Proteus Tengu].each do |hull| %>
+          <% @blueprints.includes(:item).where('items.name = ?', hull).each do |blueprint| %>
+            <li>
+              <%= link_to '#', class: 'profit' do %>
+                <%= blueprint.item.name %>
+                (<span><%= blueprint.profit_in_percent %>%</span>)
+                <span class="value"><%= blueprint.profit.isk %></span>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</div>
