@@ -30,15 +30,15 @@
   <div class="reverse-engineering">
     <h2>Reverse Engineering<span>(4 &times; cost/run)</span></h2>
     <div<%== ' class="faded"' if blueprint.cheapest_relic != 'intact' %>>
-      Intact Weapon Subroutines
+      <%= blueprint.relic.intact %>
       <span class="value"><%= blueprint.intact_per_run.isk %></span>
     </div>
     <div<%== ' class="faded"' if blueprint.cheapest_relic != 'malfunctioning' %>>
-      Malfunctioning Weapon Subroutines
+      <%= blueprint.relic.malfunctioning %>
       <span class="value"><%= blueprint.malfunctioning_per_run.isk %></span>
     </div>
     <div<%== ' class="faded"' if blueprint.cheapest_relic != 'wrecked' %>>
-      Wrecked Weapon Subroutines
+      <%= blueprint.relic.wrecked %>
       <span class="value"><%= blueprint.wrecked_per_run.isk %></span>
     </div>
   </div>
