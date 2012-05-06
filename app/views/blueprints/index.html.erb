@@ -1,14 +1,21 @@
 <div id="blueprints">
   <h2>Subsystems</h2>
   <ul>
-    <% @blueprints.each do |blueprint| %>
-      <li<%== ' class="best"' if blueprint.best? %>>
-        <%= link_to "##{blueprint.id}",
-          class: blueprint.profit >= 0 ? 'profit' : 'loss' do %>
-          <%= blueprint.item.name %>
-          (<span><%= blueprint.profit_in_percent %>%</span>)
-          <span class="value"><%= blueprint.profit.isk %></span>
-        <% end %>
+    <% %w[defensive electronics engineering offensive propulsion].each do |group| %>
+      <li class="closed">
+        <a class="list" href="#"><%= group.capitalize %></a>
+        <ul>
+          <% @blueprints.grouped(group).each do |blueprint| %>
+            <li<%== ' class="best"' if blueprint.best? %>>
+              <%= link_to "##{blueprint.id}",
+                class: blueprint.profit >= 0 ? 'profit' : 'loss' do %>
+                <%= blueprint.item.name %>
+                (<span><%= blueprint.profit_in_percent %>%</span>)
+                <span class="value"><%= blueprint.profit.isk %></span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
       </li>
     <% end %>
   </ul>

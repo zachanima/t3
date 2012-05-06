@@ -5,10 +5,13 @@ class Blueprint < ActiveRecord::Base
   belongs_to :relic
   belongs_to :decryptor, class_name: 'Item', foreign_key: :decryptor_id
 
+  scope :grouped, lambda { |group|
+    includes(:item).where 'items.name like ?', "%#{group}%"
+  }
+
   def name
     [self.item.name, 'Blueprint'] * ' '
   end
-
 
   def profit_in_percent
     (self.profit * 100 / self.buy).round
@@ -56,8 +59,9 @@ class Blueprint < ActiveRecord::Base
   end
 
   def best?
-    blueprints = Blueprint.joins(:item).where('name like ? and name like ?',
-      "#{self.name.split[0]} %", "%#{self.name.split[1]}%")
+    blueprints =
+      Blueprint.includes(:item).where('items.name like ? and items.name like ?',
+        "#{self.name.split[0]} %", "%#{self.name.split[1]}%")
 
     blueprints.reject{ |b| b === self }.each do |blueprint|
       if blueprint.profit > self.profit

@@ -57,11 +57,13 @@ div#blueprints
   ul
     list-style: none
     margin: 0
-    padding: 0
-    height: 512px
-    overflow-y: scroll
+    padding: 0 0 0 16px
+    overflow-y: auto
 
-    li:nth-child(2n)
+    li.closed ul
+      display: none
+
+    li li:nth-child(2n)
       background-color: $darkest
 
     li.best
