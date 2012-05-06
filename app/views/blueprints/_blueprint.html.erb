@@ -13,6 +13,13 @@
       <span class="value"><%= blueprint.buy.isk %></span>
     </div>
 
+    <div class="faded">
+      Cost for Corporation
+      <span class="value">
+        <%= blueprint.corp_cost.isk %>
+      </span>
+    </div>
+
     <% if blueprint.profit >= 0 %>
       <div class="profit">
         Profit (<span><%= blueprint.profit_in_percent %>%</span>)

@@ -22,26 +22,25 @@ class Blueprint < ActiveRecord::Base
   end
 
   def intact_per_run
-    (self.relic.intact.buy + self.relic.tools_buy + self.decryptor.buy) / (20 * 0.84)
+    (self.relic.intact.buy + self.relic.tools_buy + self.decryptor.buy) / (20 * 0.84 * 0.25)
   end
 
   def malfunctioning_per_run
-    (self.relic.malfunctioning.buy + self.relic.tools_buy + self.decryptor.buy) / (10 * 0.63)
+    (self.relic.malfunctioning.buy + self.relic.tools_buy + self.decryptor.buy) / (10 * 0.63 * 0.25)
   end
 
   def wrecked_per_run
-    (self.relic.wrecked.buy + self.relic.tools_buy + self.decryptor.buy) / (3 * 0.42)
+    (self.relic.wrecked.buy + self.relic.tools_buy + self.decryptor.buy) / (3 * 0.42 * 0.25)
   end
 
   def per_run
-    [self.intact_per_run, self.malfunctioning_per_run, self.wrecked_per_run].min *
-      (self.subsystem? ? 4 : 1)
+    [self.intact_per_run, self.malfunctioning_per_run, self.wrecked_per_run].min
   end
 
   def cheapest_relic
-    if per_run == intact_per_run * (self.subsystem? ? 4.0 : 1.0)
+    if per_run == intact_per_run
       'intact'
-    elsif per_run == malfunctioning_per_run * (self.subsystem? ? 4.0 : 1.0)
+    elsif per_run == malfunctioning_per_run
       'malfunctioning'
     else
       'wrecked'
@@ -60,7 +59,15 @@ class Blueprint < ActiveRecord::Base
     self.item.sell - self.buy
   end
 
+  def corp_cost
+    self.buy - (self.best? ? 0.0 : self.per_run)
+  end
+
   def best?
+    if not self.subsystem?
+      return false
+    end
+
     blueprints = Blueprint.includes(:item).where('items.name like ?',
         "#{self.name.split[0]} #{self.name.split[1]}%")
 
