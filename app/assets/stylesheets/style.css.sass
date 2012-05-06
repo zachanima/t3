@@ -36,7 +36,7 @@ h2
 span.value
   float: right
 
-.profit span
+.profit span:not(.top-value)
   color: $green
 
 .loss span
@@ -58,6 +58,9 @@ div#blueprints
     list-style: none
     margin: 0
     padding: 0 0 0 16px
+
+    li.open > a > span.top-value
+      display: none
 
     li.closed ul
       display: none
