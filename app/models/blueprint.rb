@@ -17,20 +17,28 @@ class Blueprint < ActiveRecord::Base
     not %w[Legion Loki Proteus Tengu].include? self.item.name
   end
 
+  def variations
+    if subsystem?
+      4
+    else
+      1
+    end
+  end
+
   def profit_in_percent
     (self.profit * 100 / self.buy).round
   end
 
   def intact_per_run
-    (self.relic.intact.buy + self.relic.tools_buy + self.decryptor.buy) / (20 * 0.84 * 0.25)
+    variations * (self.relic.intact.buy + self.relic.tools_buy + self.decryptor.buy) / (20 * 0.84)
   end
 
   def malfunctioning_per_run
-    (self.relic.malfunctioning.buy + self.relic.tools_buy + self.decryptor.buy) / (10 * 0.63 * 0.25)
+    variations * (self.relic.malfunctioning.buy + self.relic.tools_buy + self.decryptor.buy) / (10 * 0.63)
   end
 
   def wrecked_per_run
-    (self.relic.wrecked.buy + self.relic.tools_buy + self.decryptor.buy) / (3 * 0.42 * 0.25)
+    variations * (self.relic.wrecked.buy + self.relic.tools_buy + self.decryptor.buy) / (3 * 0.42)
   end
 
   def per_run
