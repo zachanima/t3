@@ -4,7 +4,7 @@
 
     <div class="faded">
       Subsystem @ sell
-      (<%= (blueprint.item.sell * 100 / blueprint.item.buy).to_i - 100 %>% above buy)
+      (<%= blueprint.item.sell_of_buy_in_percent %>% above buy)
       <span class="value"><%= blueprint.item.sell.isk %></span>
     </div>
 
