@@ -5,6 +5,7 @@
   font-family: evesansneue
   font-weight: bold
   src: font-url('evesansneue-expanded.otf')
+
 $margin: 16px
 $width: 512px
 $color: #ccc
@@ -36,10 +37,10 @@ h2
 span.value
   float: right
 
-.profit span:not(.top-value)
+.profit span:not(.top-value), span.profit
   color: $green
 
-.loss span
+.loss span, span.loss
   color: $red
 
 
@@ -119,7 +120,7 @@ div.blueprint
     h2 span
       font-size: 9pt
       color: $faded
-      margin-left: 1em
+      float: right
 
     div:not(.faded)
       color: #fff
