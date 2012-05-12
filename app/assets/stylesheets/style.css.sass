@@ -90,17 +90,19 @@ div#blueprints
 
 // BLUEPRINT DIVIDERS
 
-div.blueprint
+div.blueprint, div.corp_blueprint, div.total
   border-left: 1px solid $dark
   padding-left: $margin
   margin-left: $width + $margin
   width: $width
-  display: none
 
+div.blueprint, div.corp_blueprint
+  display: none
 
   div.faded
     color: $faded
 
+div.blueprint
 
   div.header
     padding-bottom: $margin
@@ -151,3 +153,6 @@ div.blueprint
         background-color: $darker
         height: 24px
         text-align: left
+
+div.total
+  font-weight: bold

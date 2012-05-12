@@ -7,7 +7,7 @@
         <ul>
           <% @blueprints.grouped(race).each do |blueprint| %>
             <li>
-              <%= link_to '#', class: 'profit' do %>
+              <%= link_to "##{blueprint.id}", class: 'corp profit' do %>
                 <%= blueprint.item.name %>
                 <span class="value"><%= blueprint.corp_cost.isk %></span>
               <% end %>
@@ -16,21 +16,17 @@
         </ul>
       </li>
     <% end %>
-    <li class="closed">
-      <a class="list" href="#">Hull</a>
-      <ul>
-        <% %w[Legion Loki Proteus Tengu].each do |hull| %>
-          <% @blueprints.includes(:item).where('items.name = ?', hull).each do |blueprint| %>
-            <li>
-              <%= link_to '#', class: 'profit' do %>
-                <%= blueprint.item.name %>
-                (<span><%= blueprint.profit_in_percent %>%</span>)
-                <span class="value"><%= blueprint.profit.isk %></span>
-              <% end %>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </li>
   </ul>
+</div>
+
+<% @blueprints.each do |blueprint| %>
+  <div class="corp_blueprint faded" id="<%= dom_id blueprint %>">
+    <span class="qty">0</span> &times; <%= blueprint.item.name %>
+    <span class="value"><%= blueprint.corp_cost.isk %></span>
+  </div>
+<% end %>
+
+<div class="total">
+  Total
+  <span class="profit value">0 ISK<span>
 </div>
