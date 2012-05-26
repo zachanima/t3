@@ -22,7 +22,7 @@ class Item < ActiveRecord::Base
   scope :relics, joins(:group).where('groups.name = ?', 'relic')
   scope :subsystems, joins(:group).where('groups.name = ?', 'subsystem')
   scope :outdated, where('updated_at < ? or buy is null or sell is null',
-                         Time.now - 2.hours).limit(100)
+                         Time.now - 2.hours).limit(50)
 
   def sell_of_buy_in_percent
     (self.sell * 100 / self.buy).round - 100
